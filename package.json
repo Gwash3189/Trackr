@@ -1,0 +1,33 @@
+{
+  "name": "Trackr",
+  "version": "1.0.0",
+  "description": "D&D 5E Assitant",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt "
+  },
+  "keywords": [
+    "D&D"
+  ],
+  "author": "Adam Beck",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bowercopy": "^1.1.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-exec": "^0.4.6",
+    "grunt-webpack": "^1.0.8",
+    "karma": "^0.12.24",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-jasmine": "^0.1.5",
+    "karma-webpack": "^1.3.1",
+    "rewire": "^2.1.0",
+    "rewire-webpack": "^0.2.0",
+    "webpack": "^1.4.8",
+    "webpack-dev-server": "^1.6.5"
+  },
+  "dependencies": {
+    "jquery": "^2.1.1",
+    "knockout": "^3.2.0"
+  }
+}
