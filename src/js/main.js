@@ -1,6 +1,5 @@
 /** @jsx React.DOM */
 
-var APP = require("./components/app");
+var Trackr = require("./components/trackr");
 var React = require("react");
-
-React.renderComponent(<APP />, document.getElementById("main"))
+React.render(<Trackr />, document.getElementById("trackr"));

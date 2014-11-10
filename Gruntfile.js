@@ -1,0 +1,68 @@
+module.exports = function (grunt) {
+    grunt.loadNpmTasks("grunt-webpack");
+    grunt.loadNpmTasks("grunt-bowercopy");
+
+    var webpackConfig = {};
+    webpackConfig.dev = {
+        // webpack options
+        module: {
+            loaders: [ // required for react jsx
+                {
+                    test: /\.js$/,
+                    loader: "jsx-loader"
+                }, {
+                    test: /\.jsx$/,
+                    loader: "jsx-loader?insertPragma=React.DOM"
+                }
+            ]
+        },
+        entry: "./src/js/main.js",
+        output: {
+            path: "prod/js",
+            filename: "main.js"
+        },
+        stats: {
+            // Configure the console output
+            colors: false,
+            modules: true,
+            reasons: true
+        },
+        // stats: false disables the stats output
+        progress: false, // Don't show progress
+        // Defaults to true
+
+        failOnError: false, // don't report error to grunt if webpack find errors
+        // Use this if webpack errors are tolerable and grunt should continue
+
+        watch: true, // use webpacks watcher
+        // You need to keep the grunt process alive
+
+        keepalive: true // don't finish the grunt task
+        // Use this in combination with the watch option
+    };
+
+    grunt.initConfig({
+        bowercopy: {
+            trackr: {
+                files: {
+                    "prod/css/bootstrap.min.css": "bower_components/bootstrap/dist/css/bootstrap.min.css",
+                    "src/css/bootstrap.min.css": "bower_components/bootstrap/dist/css/bootstrap.min.css"
+                }
+            }
+        },
+        webpack: {
+            trackr: webpackConfig.dev
+        }
+    });
+    grunt.registerTask("copyIndex", "copy index from src to prod", function () {
+        var fs = require('fs-extra');
+
+        fs.copySync('src/index.html', 'prod/index.html');
+    });
+    grunt.registerTask("node-prod", "set env to prod", function () {
+        process.env.NODE_ENV = "production";
+    });
+    grunt.registerTask("default", ["copyIndex", "bowercopy", "webpack:trackr"]);
+    grunt.registerTask("prod", ["node-prod", "copyIndex", "bowercopy", "webpack:trackr-prod"]);
+
+};
