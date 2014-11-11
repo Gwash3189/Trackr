@@ -1,15 +1,19 @@
 /** @jsx React.DOM */
 
 var React = require("react");
-var PlayersList = require("./players/playersContainer")
+var PlayersContainer = require("./players/playersContainer");
+var ControlsContainer = require("./controls/controlsContainer");
 
 var Trackr =
     React.createClass({
         render: function () {
             return (
-                <div>
-                    <div>
-                        <PlayersList />
+                <div className="row">
+                    <div className="col-xs-2">
+                        <ControlsContainer />
+                    </div>
+                    <div className="col-xs-10">
+                        <PlayersContainer />
                     </div>
                     <div></div>
                     <div></div>

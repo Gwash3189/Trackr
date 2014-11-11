@@ -1,0 +1,21 @@
+var React = require("react");
+
+var ControlsListItem =
+    React.createClass({
+        getInitialState: function () {
+            debugger;
+            return {
+                text: this.props.text,
+                clickHandler: this.props.clickHandler,
+                id: this.props.id
+            }
+        },
+        render: function () {
+            return (
+                  <button id={this.state.id} onClick={this.state.clickHandler}>{this.state.text}</button>
+            )
+        }
+    });
+
+
+module.exports = ControlsListItem;

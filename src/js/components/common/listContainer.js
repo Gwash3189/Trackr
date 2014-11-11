@@ -8,7 +8,6 @@ var listContainer =
         },
         render: function () {
             var nodes = this.props.list.map(function (item) {
-                debugger;
                 return (
                     <li key={item.id}>
                         {this.props.renderListItem(item)}
@@ -16,7 +15,7 @@ var listContainer =
             }, this);
             return (
                 <div>
-                    <div className="well-sm" className="">
+                    <div className="well well-sm">
                         <ul ref="list">
                             {nodes}
                         </ul>

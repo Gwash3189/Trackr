@@ -1,19 +1,29 @@
 var React = require("react");
-var ListContainer = require("./../common/listConainer");
+var Reflux = require("reflux");
+var PlayerStore = require("./../../stores/players/playerStore");
+var ListContainer = require("./../common/listContainer");
+var PlayerListItem = require("./playersListItem");
 
 var Player =
     React.createClass({
-        getInitialState: function() {
+        mixins: [Reflux.ListenerMixin],
+        componentDidMount: function () {
+            this.listenTo(PlayerStore, this.updatePlayers, this.updatePlayers);
+        },
+        updatePlayers: function (players) {
+            this.setState({
+                players: players
+            });
+        },
+        getInitialState: function () {
             return {
-                players: [{name: "Adam", hp: 12, id: 1}]
+                players: PlayerStore.getStoreIntialState()
             }
         },
-        renderPlayerItem: function(item) {
-            var PlayerListItem = require("./playersListItem");
+        renderPlayerItem: function (item) {
             return <PlayerListItem name={item.name} hp={item.hp}/>
         },
-        render: function() {
-            debugger;
+        render: function () {
             return <ListContainer list={this.state.players}  renderListItem={this.renderPlayerItem}/>
         }
     });
