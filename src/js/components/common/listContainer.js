@@ -8,7 +8,7 @@ var listContainer =
         },
         render: function () {
             var classes = React.addons.classSet(this.props.classes);
-            var nodes = this.props.list.map(function (item) {
+            var nodes = this.props.list.map(item => {
                 if (!item.id) {
                     throw new Error("provide an ID on each child item");
                 }

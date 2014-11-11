@@ -11,10 +11,10 @@ module.exports = function (grunt) {
             loaders: [ // required for react jsx
                 {
                     test: /\.js$/,
-                    loader: "jsx-loader"
+                    loader: "jsx-loader?harmony"
                 }, {
                     test: /\.jsx$/,
-                    loader: "jsx-loader?insertPragma=React.DOM"
+                    loader: "jsx-loader?harmony"
                 }
             ]
         },
@@ -23,13 +23,7 @@ module.exports = function (grunt) {
             path: "prod/js",
             filename: "main.js"
         },
-        stats: {
-            // Configure the console output
-            colors: false,
-            modules: true,
-            reasons: true
-        },
-        // stats: false disables the stats output
+
         progress: false, // Don't show progress
         // Defaults to true
 
