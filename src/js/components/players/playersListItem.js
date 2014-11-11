@@ -10,18 +10,21 @@ var PlayersListItem =
         },
         render: function () {
             return (
-                <div className="list-group-item">
-                    <h4 className="list-group-item-heading">{this.state.name}</h4>
-                    <div className="row">
-                        <div className="col-xs-4">
-                            <p className="list-group-item-text">
-                                <strong>HitPoints</strong>: {this.state.hp}
-                            </p>
-                        </div>
-                        <div className="col-xs-4">
-                            <p className="list-group-item-text">
-                                <strong>Initiative</strong>: {this.state.hp}
-                            </p>
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        <h3 className="panel-title">{this.state.name}</h3>
+                    </div>
+                    <div className="panel-body">
+                        <p><strong>Health: </strong>{this.props.hp}</p>
+                    </div>
+                    <div class="panel-footer">
+                        <div className="row">
+                            <div className="col-xs-6">
+                                <button className="btn btn-primary btn-block">Edit Player</button>
+                            </div>
+                            <div className="col-xs-6">
+                                <button className="btn btn-danger btn-block">Delete Player</button>
+                            </div>
                         </div>
                     </div>
                 </div>

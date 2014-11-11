@@ -8,7 +8,7 @@ var Player =
     React.createClass({
         mixins: [Reflux.ListenerMixin],
         classes: {
-            "list-group": true
+            "list-unstyled": true
         },
         componentDidMount: function () {
             this.listenTo(PlayerStore, this.updatePlayers, this.updatePlayers);
@@ -25,9 +25,12 @@ var Player =
         },
         renderPlayerItem: function (item) {
             return <PlayerListItem name={item.name} hp={item.hp}/>
+
         },
         render: function () {
-            return <ListContainer classes={this.classes}list={this.state.players}  renderListItem={this.renderPlayerItem}/>
+            return (
+                    <ListContainer classes={this.classes}list={this.state.players}  renderListItem={this.renderPlayerItem} />
+            )
         }
     });
 

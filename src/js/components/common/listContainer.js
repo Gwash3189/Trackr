@@ -9,20 +9,18 @@ var listContainer =
         render: function () {
             var classes = React.addons.classSet(this.props.classes);
             var nodes = this.props.list.map(function (item) {
-                if(!item.id){
+                if (!item.id) {
                     throw new Error("provide an ID on each child item");
                 }
                 return (
-                    <span key={item.id}>
+                    <li key={item.id}>
                         {this.props.renderListItem(item)}
-                    </span>)
+                    </li>)
             }, this);
             return (
-                <div>
-                    <div className={classes}>
+                    <ul className={classes}>
                         {nodes}
-                    </div>
-                </div>
+                    </ul>
             )
         }
     });

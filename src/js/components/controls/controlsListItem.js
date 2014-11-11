@@ -11,7 +11,7 @@ var ControlsListItem =
         },
         render: function () {
             return (
-                  <button id={this.state.id} onClick={this.state.clickHandler}>{this.state.text}</button>
+                  <button className="btn btn-primary btn-block" id={this.state.id} onClick={this.state.clickHandler}>{this.state.text}</button>
             )
         }
     });

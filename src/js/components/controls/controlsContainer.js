@@ -5,17 +5,14 @@ var ControlsListItem = require("./controlsListItem");
 
 var Controls =
     React.createClass({
+        classes: {
+            "list-unstyled": true,
+            "well well-sm": true
+        },
         getInitialState: function() {
             return {
                 controls: [
-                    {
-                        text: "Click Me",
-                        clickHandler: function() {
-                            debugger;
-                            PlayerActions.addPlayer({name: "John", hp: 3});
-                        },
-                        id: 1
-                    }
+                    require("./PlayerControls")()
 
                 ]
             }
@@ -24,11 +21,8 @@ var Controls =
             return <ControlsListItem id={item.id} text={item.text} clickHandler={item.clickHandler} />
         },
         render: function() {
-            return (
-                <span>
-                    <ListContainer list={this.state.controls}  renderListItem={this.renderControlsItem}/>
-                </span>
-            )
+            return <ListContainer classes={this.classes} list={this.state.controls}  renderListItem={this.renderControlsItem}/>;
+
         }
     });
 
