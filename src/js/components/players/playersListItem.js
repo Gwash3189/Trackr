@@ -10,11 +10,21 @@ var PlayersListItem =
         },
         render: function () {
             return (
-                <span ref="player">
-                    <span ref="name">{this.state.name}</span>
-                        <br />
-                    <span ref="hp">{this.state.hp}</span>
-                </span>
+                <div className="list-group-item">
+                    <h4 className="list-group-item-heading">{this.state.name}</h4>
+                    <div className="row">
+                        <div className="col-xs-4">
+                            <p className="list-group-item-text">
+                                <strong>HitPoints</strong>: {this.state.hp}
+                            </p>
+                        </div>
+                        <div className="col-xs-4">
+                            <p className="list-group-item-text">
+                                <strong>Initiative</strong>: {this.state.hp}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             )
         }
     });

@@ -12,7 +12,7 @@ var Trackr =
                     <div className="col-xs-2">
                         <ControlsContainer />
                     </div>
-                    <div className="col-xs-10">
+                    <div className="col-xs-8">
                         <PlayersContainer />
                     </div>
                     <div></div>

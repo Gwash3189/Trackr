@@ -21,11 +21,14 @@ var Controls =
             }
         },
         renderControlsItem: function(item) {
-            debugger;
             return <ControlsListItem id={item.id} text={item.text} clickHandler={item.clickHandler} />
         },
         render: function() {
-            return <ListContainer list={this.state.controls}  renderListItem={this.renderControlsItem}/>
+            return (
+                <span>
+                    <ListContainer list={this.state.controls}  renderListItem={this.renderControlsItem}/>
+                </span>
+            )
         }
     });
 

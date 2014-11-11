@@ -1,4 +1,4 @@
-var React = require("react");
+var React = require("react/addons");
 
 var listContainer =
     React.createClass({
@@ -7,18 +7,20 @@ var listContainer =
             renderListItem: React.PropTypes.func.isRequired
         },
         render: function () {
+            var classes = React.addons.classSet(this.props.classes);
             var nodes = this.props.list.map(function (item) {
+                if(!item.id){
+                    throw new Error("provide an ID on each child item");
+                }
                 return (
-                    <li key={item.id}>
+                    <span key={item.id}>
                         {this.props.renderListItem(item)}
-                    </li>)
+                    </span>)
             }, this);
             return (
                 <div>
-                    <div className="well well-sm">
-                        <ul ref="list">
-                            {nodes}
-                        </ul>
+                    <div className={classes}>
+                        {nodes}
                     </div>
                 </div>
             )

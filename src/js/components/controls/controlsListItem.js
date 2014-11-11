@@ -3,7 +3,6 @@ var React = require("react");
 var ControlsListItem =
     React.createClass({
         getInitialState: function () {
-            debugger;
             return {
                 text: this.props.text,
                 clickHandler: this.props.clickHandler,

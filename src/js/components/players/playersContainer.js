@@ -7,6 +7,9 @@ var PlayerListItem = require("./playersListItem");
 var Player =
     React.createClass({
         mixins: [Reflux.ListenerMixin],
+        classes: {
+            "list-group": true
+        },
         componentDidMount: function () {
             this.listenTo(PlayerStore, this.updatePlayers, this.updatePlayers);
         },
@@ -24,7 +27,7 @@ var Player =
             return <PlayerListItem name={item.name} hp={item.hp}/>
         },
         render: function () {
-            return <ListContainer list={this.state.players}  renderListItem={this.renderPlayerItem}/>
+            return <ListContainer classes={this.classes}list={this.state.players}  renderListItem={this.renderPlayerItem}/>
         }
     });
 

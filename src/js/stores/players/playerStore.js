@@ -18,7 +18,6 @@ var PlayerStore = Reflux.createStore({
             return this.players;
         },
         addPlayer: function (playerToAdd) {
-            debugger;
             playerToAdd.id = ids();
             this.players.push(playerToAdd);
             this.triggerList();
