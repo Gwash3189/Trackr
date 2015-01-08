@@ -16,7 +16,7 @@ var listContainer =
                     <li key={item.id}>
                         {this.props.renderListItem(item)}
                     </li>)
-            }, this);
+            });
             return (
                     <ul className={classes}>
                         {nodes}

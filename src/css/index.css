@@ -1,7 +1,32 @@
-body{
-    margin-top: 60px;
+.btn-circle {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.42;
+    border-radius: 15px;
 }
 
-.hide-input{
- display:none;
+.position-relative {
+    position: relative;
+}
+
+.floating-action-button {
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    border: none;
+    right: 35px;
+    bottom: 35px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: #fff;
+    padding: 16px;
+    display: inline-block;
+    box-shadow: 0 3px 6px rgba(0,0,0,.2),0 3px 6px rgba(0,0,0,.28);
+    -webkit-transform:translateZ(1px);
+    -moz-transform:translateZ(1px);
+    -o-transform:translateZ(1px);
+    transform:translateZ(1px);
 }

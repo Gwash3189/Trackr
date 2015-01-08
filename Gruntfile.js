@@ -24,16 +24,16 @@ module.exports = function (grunt) {
             filename: "main.js"
         },
 
-        progress: false, // Don't show progress
+        progress: true, // Don't show progress
         // Defaults to true
 
         failOnError: false, // don't report error to grunt if webpack find errors
         // Use this if webpack errors are tolerable and grunt should continue
 
-        watch: false, // use webpacks watcher
+        watch: true, // use webpacks watcher
         // You need to keep the grunt process alive
 
-        keepalive: false // don't finish the grunt task
+        keepalive: true // don't finish the grunt task
         // Use this in combination with the watch option
     };
 
@@ -42,6 +42,8 @@ module.exports = function (grunt) {
             trackr: {
                 files: {
                     "prod/css/bootstrap.min.css": "bower_components/bootstrap/dist/css/bootstrap.min.css",
+                    "prod/css/font-awesome.min.css": "bower_components/font-awesome/css/font-awesome.min.css",
+                    "prod/fonts": "bower_components/font-awesome/fonts"
                 }
             }
         },
@@ -77,7 +79,7 @@ module.exports = function (grunt) {
         process.env.NODE_ENV = "production";
     });
 
-    grunt.registerTask("default", ["copyIndex", "concat", "bowercopy", "webpack:trackr", "watch:dev"]);
+    grunt.registerTask("default", ["copyIndex", "concat", "bowercopy"]);
     grunt.registerTask("prod", ["node-prod", "copyIndex", "bowercopy", "webpack:trackr-prod"]);
 
 };

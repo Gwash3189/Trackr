@@ -1,35 +1,33 @@
 var React = require("react");
-var Reflux = require("reflux");
 var PlayerStore = require("./../../stores/players/playerStore");
-var ListContainer = require("./../common/listContainer");
-var PlayerListItem = require("./playersListItem");
+var PlayersList = require("./playersList");
+var playerMixin = require("../../mixins/playerMixin");
+var FloatingActionButton = require("./../common/floatingActionButton");
+var PlayerActions = require("./../../actions/players/playerActions");
+var Navigation = require("react-router").Navigation;
 
 var Player =
     React.createClass({
-        mixins: [Reflux.ListenerMixin],
-        classes: {
-            "list-unstyled": true
-        },
-        componentDidMount: function () {
-            this.listenTo(PlayerStore, this.updatePlayers, this.updatePlayers);
-        },
-        updatePlayers: function (players) {
-            this.setState({
-                players: players
-            });
-        },
+        mixins:[Navigation],
         getInitialState: function () {
             return {
-                players: PlayerStore.getStoreIntialState()
+                players: PlayerStore.getStoreInitialState()
             }
         },
-        renderPlayerItem: function (item) {
-            return <PlayerListItem name={item.name} hp={item.hp}/>
-
+        addPlayerToList: function() {
+            var player = playerMixin();
+            PlayerActions.addPlayer(player);
+            this.transitionTo("player", {id: player.id});
         },
         render: function () {
             return (
-                    <ListContainer classes={this.classes}list={this.state.players}  renderListItem={this.renderPlayerItem} />
+                <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <h1 className="page-header">Players</h1>
+                    <PlayersList/>
+                    <FloatingActionButton className="btn-primary" onClick={this.addPlayerToList}>
+                        <i className="fa fa-plus fa-2x"></i>
+                    </FloatingActionButton>
+                </div>
             )
         }
     });
