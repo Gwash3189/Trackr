@@ -19,7 +19,6 @@ var PlayerStore = Reflux.createStore({
             })[0] || false;
     },
     addPlayer: function (playerToAdd) {
-        debugger;
         this.players.push(PlayerMixin(playerToAdd));
         this.triggerList();
     },

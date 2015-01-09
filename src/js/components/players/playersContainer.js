@@ -17,11 +17,11 @@ var Player =
         addPlayerToList: function() {
             var player = playerMixin();
             PlayerActions.addPlayer(player);
-            this.transitionTo("player", {id: player.id});
+            // this.transitionTo("player", {id: player.id});
         },
         render: function () {
             return (
-                <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div className="col-xs-12 main">
                     <h1 className="page-header">Players</h1>
                     <PlayersList/>
                     <FloatingActionButton className="btn-primary" onClick={this.addPlayerToList}>

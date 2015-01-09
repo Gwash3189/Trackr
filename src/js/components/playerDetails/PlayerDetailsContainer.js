@@ -24,7 +24,7 @@ module.exports = React.createClass({
         }
         this.setState({
             player: this.getPlayer(players)
-        })
+        });
     },
     isUndefinedPlayer: function(player) {
         if(player.id === undefined){
