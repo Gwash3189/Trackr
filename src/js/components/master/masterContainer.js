@@ -1,5 +1,6 @@
 var React = require("react");
 var Link = require('react-router').Link;
+var RouteHandler = require('react-router').RouteHandler;
 
 var masterContainer =
     React.createClass({
@@ -16,7 +17,7 @@ var masterContainer =
                             </ul>
                         </div>
                     </div>
-                    <this.props.activeRouteHandler/>
+                    <RouteHandler/>
                 </div>
             );
         }
