@@ -6,6 +6,7 @@ var playerMixin = require("../../mixins/playerMixin");
 var PlayerListItem = require("./playersListItem");
 var FloatingActionButton = require("./../common/floatingActionButton");
 var Navigation = require("react-router").Navigation;
+var Link = require("react-router").Link;
 
 
 var PlayersList =
@@ -13,7 +14,11 @@ var PlayersList =
         mixins: [Navigation],
         createPlayerItem: function (x) {
             var p = PlayerMixin(x);
-            return <PlayerListItem key={p.id} character={p}/>
+            return (
+                <Link to="player" params={{id: p.id}} key={p.id}>
+                    <PlayerListItem character={p}/>
+                </Link>
+            );
         },
         addPlayerToList: function () {
             var player = playerMixin();

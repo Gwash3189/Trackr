@@ -52,11 +52,11 @@ module.exports = React.createClass({
                     </div>
                     <div className="form-group">
                         <label htmlFor="class">Class</label>
-                        <SelectList className="form-control" id="class" list={this.state.classes}></SelectList>
+                        <SelectList className="form-control" id="class" list={this.state.classes} onChange={this.handleChange}></SelectList>
                     </div>
                     <div className="form-group">
                         <label htmlFor="class">Class</label>
-                        <SelectList className="form-control" id="class" list={this.state.races}></SelectList>
+                        <SelectList className="form-control" id="class" list={this.state.races} onChange={this.handleChange}></SelectList>
                     </div>
                 </form>
                 <button onClick={this.goBackToPlayers}> Done </button>

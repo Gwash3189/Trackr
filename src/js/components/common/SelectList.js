@@ -9,7 +9,7 @@ var SelectList =
         },
         render: function () {
            return (
-               <select  className={this.props.className} id={this.props.id} onChange={this.props.callBack}>
+               <select  className={this.props.className} id={this.props.id} onChange={this.props.onChange}>
                     {this.props.list.map(this.renderList)}
                </select>
            )

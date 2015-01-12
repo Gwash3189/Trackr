@@ -10,7 +10,7 @@ var Navigation = require("react-router").Navigation;
 module.exports = React.createClass({
     mixins: [Reflux.ListenerMixin, State, Navigation],
     componentDidMount: function () {
-        this.listenTo(PlayerStore, this.updatePlayer);
+        this.listenTo(PlayerStore, this.updatePlayer, this.updatePlayer);
     },
     getInitialState: function () {
         return {
