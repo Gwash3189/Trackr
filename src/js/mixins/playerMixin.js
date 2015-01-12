@@ -6,5 +6,6 @@ module.exports = mixin( obj => {
         obj.class = obj.class || "Class";
         obj.race = obj.race || "Race";
         obj.id = obj.id || guidMaker();
+        obj.playerName = obj.playerName || "";
         return obj;
 });

@@ -2,40 +2,34 @@ var React = require("react");
 var Reflux = require("reflux");
 var PlayerStore = require("./../../stores/players/playerStore");
 var PlayerDetailsForm = require("./PlayerDetailsForm");
+var State = require("react-router").State;
 var Navigation = require("react-router").Navigation;
 
 
 
 module.exports = React.createClass({
-    mixins: [Reflux.ListenerMixin],
+    mixins: [Reflux.ListenerMixin, State, Navigation],
     componentDidMount: function () {
-        this.listenTo(PlayerStore, this.updatePlayer, this.updatePlayer);
+        this.listenTo(PlayerStore, this.updatePlayer);
     },
     getInitialState: function () {
         return {
             player: {}
-        }
+        };
     },
     updatePlayer: function (players) {
         var newPlayer = this.getPlayer(players);
-        if(this.isUndefinedPlayer(newPlayer)){
+        if(newPlayer && newPlayer.id === undefined){
             this.transitionTo("players");
-            return;
-        }
-        this.setState({
-            player: this.getPlayer(players)
-        });
-    },
-    isUndefinedPlayer: function(player) {
-        if(player.id === undefined){
-            return true;
-        } else if (this.getPlayer() === undefined){
-            return true;
+        } else {
+            this.setState({
+                player: newPlayer
+            });    
         }
     },
     getPlayer: function (players) {
         return players.filter(x => {
-            return x.id === this.props.params.id;
+            return x.id === this.getParams().id;
         })[0];
     },
     render: function () {

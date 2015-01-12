@@ -8,7 +8,7 @@ var PlayerStore = Reflux.createStore({
         this.listenTo(PlayerActions.removePlayer, this.removePlayer);
         this.listenTo(PlayerActions.editPlayer, this.editPlayer)
     },
-    getStoreInitialState: function () {
+    getInitialState: function () {
         return this.players;
     },
     getPlayer: function (playerId) {
