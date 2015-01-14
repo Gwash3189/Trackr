@@ -12,12 +12,14 @@ var Link = require("react-router").Link;
 var PlayersList =
     React.createClass({
         mixins: [Navigation],
-        createPlayerItem: function (x) {
-            var p = PlayerMixin(x);
+        createPlayerItem: function (p) {
             return (
-                <Link to="player" params={{id: p.id}} key={p.id}>
-                    <PlayerListItem character={p}/>
-                </Link>
+                <div className="row">
+                    <Link to="player" params={{id: p.id}} key={p.id}>
+                        <PlayerListItem character={p}/>
+                    </Link>
+                </div>
+
             );
         },
         addPlayerToList: function () {

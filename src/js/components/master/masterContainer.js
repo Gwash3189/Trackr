@@ -5,7 +5,6 @@ var RouteHandler = require('react-router').RouteHandler;
 var masterContainer =
     React.createClass({
         render: function () {
-
             return (
                 <div>
                     <RouteHandler/>

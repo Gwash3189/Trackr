@@ -8,10 +8,13 @@ var PlayersContainer = require("./components/players/playersContainer");
 var PlayerDetailsContainer = require("./components/playerDetails/PlayerDetailsContainer");
 
 var routes = (
-    <Route name="app" path="/" handler={MasterContainer}>
+    <Route name="Trackr" path="/" handler={MasterContainer}>
         <DefaultRoute handler={PlayersContainer} />
-        <Route name="players" path="/players" handler={PlayersContainer}></Route>
-        <Route name="player" path="player/:id" handler={PlayerDetailsContainer}></Route>
+        <Route name="players" path="/players" handler={PlayersContainer}>
+            <DefaultRoute handler={PlayersContainer} />
+            <Route name="player" path="/:id" handler={PlayerDetailsContainer} />
+        </Route>
+
     </Route>
 );
 

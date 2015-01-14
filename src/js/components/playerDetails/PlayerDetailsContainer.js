@@ -19,12 +19,10 @@ module.exports = React.createClass({
     },
     updatePlayer: function (players) {
         var newPlayer = this.getPlayer(players);
-        if(newPlayer && newPlayer.id === undefined){
-            this.transitionTo("players");
-        } else {
+        if(newPlayer !== undefined){
             this.setState({
                 player: newPlayer
-            });    
+            });
         }
     },
     getPlayer: function (players) {
@@ -33,8 +31,13 @@ module.exports = React.createClass({
         })[0];
     },
     render: function () {
-        return (
-            <PlayerDetailsForm player={this.state.player}></PlayerDetailsForm>
-        )
+        if(this.state.player.id){
+            return (
+                <PlayerDetailsForm player={this.state.player}></PlayerDetailsForm>
+            )
+        } else {
+            return null;
+        }
+
     }
 });
