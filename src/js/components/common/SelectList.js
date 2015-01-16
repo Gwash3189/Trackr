@@ -8,12 +8,9 @@ var SelectList =
             )
         },
         render: function () {
-            var list = (this.props.list.map(x => x) || []).unshift({
-                value: ""
-            });
            return (
                <select  className={this.props.className} id={this.props.id} onChange={this.props.onChange}>
-                    {list.map(this.renderList)}
+                    {this.props.list.map(this.renderList)}
                </select>
            )
         }

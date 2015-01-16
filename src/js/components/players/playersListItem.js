@@ -10,10 +10,10 @@ var PlayersListItem = React.createClass({
                             <h4 className="truncate">{this.props.character.name}</h4>
                         </div>
                         <div className="col-xs-2 class-race-text">
-                            <span className="text-muted">{this.props.character.class}</span>
+                            <span className="text-muted">{this.props.character.race}</span>
                         </div>
                         <div className="col-xs-2 class-race-text">
-                            <span className="text-muted">{this.props.character.race}</span>
+                            <span className="text-muted">{this.props.character.class}</span>
                         </div>
                     </div>
                 </div>

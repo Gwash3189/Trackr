@@ -6,7 +6,6 @@ var State = require("react-router").State;
 var Navigation = require("react-router").Navigation;
 
 
-
 module.exports = React.createClass({
     mixins: [Reflux.ListenerMixin, State, Navigation],
     componentDidMount: function () {
@@ -19,7 +18,7 @@ module.exports = React.createClass({
     },
     updatePlayer: function (players) {
         var newPlayer = this.getPlayer(players);
-        if(newPlayer !== undefined){
+        if (newPlayer !== undefined) {
             this.setState({
                 player: newPlayer
             });
@@ -31,13 +30,6 @@ module.exports = React.createClass({
         })[0];
     },
     render: function () {
-        if(this.state.player.id){
-            return (
-                <PlayerDetailsForm player={this.state.player}></PlayerDetailsForm>
-            )
-        } else {
-            return null;
-        }
-
+        return <PlayerDetailsForm player={this.state.player}></PlayerDetailsForm>
     }
 });
