@@ -5,8 +5,16 @@ var $ = require("jquery");
 
 var masterContainer =
     React.createClass({
+        componentDidMount: function() {
+          this.toggleShortcuts();
+        },
+        toggleShortcuts: function() {
+          $(this.refs.monstersShortcut.getDOMNode()).toggle();
+          $(this.refs.playersShortcut.getDOMNode()).toggle();
+        },
         toggleMenu: function(e) {
             $(this.refs.menu.getDOMNode()).toggleClass("active");
+            this.toggleShortcuts()
             e.preventDefault();
         },
         render: function () {
@@ -16,7 +24,7 @@ var masterContainer =
                         <ul id="sidebar_menu" className="sidebar-nav">
                             <li className="sidebar-brand">
                                 <a id="menu-toggle" href="#" onClick={this.toggleMenu}>Menu
-                                    <span id="" className="fa fa-align-justify"></span>
+                                    <span id="" className="fa fa-align-justify nav-list-header"></span>
                                 </a>
                             </li>
                         </ul>
@@ -24,13 +32,13 @@ var masterContainer =
                             <li>
                                 <a>
                                     Players
-                                    <span className="fa fa-link"></span>
+                                    <span className="nav-list-item" ref="playersShortcut">P</span>
                                 </a>
                             </li>
                             <li>
                                 <a>
                                     Monsters
-                                    <span className="fa fa-link"></span>
+                                    <span className="nav-list-item" ref="monstersShortcut">M</span>
                                 </a>
                             </li>
                         </ul>

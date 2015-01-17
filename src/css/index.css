@@ -45,6 +45,19 @@
     padding-top: 32px;
 }
 
+.nav-list-item {
+  float: right;
+  padding-right: 29px;
+  font-size: 22px;
+}
+
+.nav-list-header{
+  float: right;
+  padding-right:25px;
+  font-size: 23px;
+  padding-top: 20px;
+
+}
 
 /**/
 
