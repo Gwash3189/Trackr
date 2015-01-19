@@ -1,12 +1,14 @@
 var Reflux = require("reflux");
 var PlayerActions = require("./../../actions/players/playerActions");
 var PlayerMixin = require("./../../mixins/playerMixin");
+var LocalStorageMixin = require("./../../mixins/localStorageMixin");
 var PlayerStore = Reflux.createStore({
+    mixins: [LocalStorageMixin],
     init: function () {
-        this.players = [];
+        this.players  = this.setupLocalStorage("trackr-players") || [];
         this.listenTo(PlayerActions.addPlayer, this.addPlayer);
         this.listenTo(PlayerActions.removePlayer, this.removePlayer);
-        this.listenTo(PlayerActions.editPlayer, this.editPlayer)
+        this.listenTo(PlayerActions.editPlayer, this.editPlayer);
     },
     getInitialState: function () {
         return this.players;
@@ -32,15 +34,15 @@ var PlayerStore = Reflux.createStore({
                             if (item[key] !== masterCopy[key])
                                 return true;
                         }
-                    })
+                    });
                 }
-            )
+            );
         }
     },
     editPlayer: function (editedPlayer) {
         this.players.map(function (x, i) {
             if (x.id === editedPlayer.id) {
-                return i
+                return i;
             }
         }).forEach(function (indexOfPlayerToEdit) {
             this.players[indexOfPlayerToEdit] = editedPlayer;
