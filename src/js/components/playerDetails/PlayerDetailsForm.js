@@ -5,6 +5,7 @@ var ClassStore = require("./../../stores/classes/classStore");
 var RaceStore = require("./../../stores/races/RacesStore");
 var SelectList = require("./../common/SelectList");
 var Navigation = require("react-router").Navigation;
+var FloatingNavigationButton = require("./../common/floatingActionButton");
 
 
 module.exports = React.createClass({
@@ -34,8 +35,12 @@ module.exports = React.createClass({
             races: races
         });
     },
+    removePlayerFromStore: function() {
+        PlayerActions.removePlayer(this.props.player);
+        this.goBackToPlayers();
+    },
     goBackToPlayers: function () {
-        this.transitionTo("Trackr");
+        this.transitionTo("players");
     },
     render: function () {
         return (
@@ -48,19 +53,34 @@ module.exports = React.createClass({
                             <input id="name" className="form-control input-lg" value={this.props.player.name} onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
+                            <label htmlFor="imageSource">Character Image</label>
+                            <input id="imageSource" className="form-control input-lg" value={this.props.player.imageSource} onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-group">
                             <label htmlFor="playerName">Player Name</label>
                             <input id="playerName" className="form-control input-lg" value={this.props.player.playerName} onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="class">Class</label>
-                            <SelectList className="form-control input-lg" id="class" list={this.state.classes} onChange={this.handleChange}></SelectList>
+                            <SelectList className="form-control input-lg" id="class"
+                                list={this.state.classes}
+                                onChange={this.handleChange}
+                                defaultValue={{value: "Class"}}></SelectList>
                         </div>
                         <div className="form-group">
                             <label htmlFor="race">Race</label>
-                            <SelectList className="form-control input-lg" id="race" list={this.state.races} onChange={this.handleChange}></SelectList>
+                            <SelectList className="form-control input-lg" id="race"
+                                list={this.state.races}
+                                onChange={this.handleChange}
+                                defaultValue={{value: "Race"}}></SelectList>
                         </div>
                     </form>
-                    <button onClick={this.goBackToPlayers}> Done </button>
+                    <FloatingNavigationButton className="btn-success" onClick={this.goBackToPlayers}>
+                        <i className="fa fa-check fa-2x"></i>
+                    </FloatingNavigationButton>
+                    <FloatingNavigationButton className="btn-danger delete-button" onClick={this.removePlayerFromStore}>
+                        <i className="fa fa-remove fa-2x"></i>
+                    </FloatingNavigationButton>
                 </div>
             </div>
         )

@@ -1,4 +1,5 @@
 var React = require("react/addons");
+var $ = require("jquery");
 
 var SelectList =
     React.createClass({
@@ -8,9 +9,11 @@ var SelectList =
             )
         },
         render: function () {
+            var list = this.props.list.slice(0);
+            list.unshift(this.props.defaultValue || {value: ""});
            return (
                <select  className={this.props.className} id={this.props.id} onChange={this.props.onChange}>
-                    {this.props.list.map(this.renderList)}
+                    {list.map(this.renderList)}
                </select>
            )
         }

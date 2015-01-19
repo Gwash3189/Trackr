@@ -14,12 +14,9 @@ var PlayersList =
         mixins: [Navigation],
         createPlayerItem: function (p) {
             return (
-                <div className="row">
-                    <Link to="player" params={{id: p.id}} key={p.id}>
-                        <PlayerListItem character={p}/>
-                    </Link>
-                </div>
-
+                <Link to="player" params={{id: p.id}} key={p.id}>
+                    <PlayerListItem character={p}/>
+                </Link>
             );
         },
         addPlayerToList: function () {

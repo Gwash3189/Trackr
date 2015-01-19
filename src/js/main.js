@@ -10,11 +10,8 @@ var PlayerDetailsContainer = require("./components/playerDetails/PlayerDetailsCo
 var routes = (
     <Route name="Trackr" path="/" handler={MasterContainer}>
         <DefaultRoute handler={PlayersContainer} />
-        <Route name="players" path="/players" handler={PlayersContainer}>
-            <DefaultRoute handler={PlayersContainer} />
-            <Route name="player" path="/:id" handler={PlayerDetailsContainer} />
-        </Route>
-
+        <Route name="players" path="players" handler={PlayersContainer}></Route>
+        <Route name="player" path="players/:id" handler={PlayerDetailsContainer} />
     </Route>
 );
 

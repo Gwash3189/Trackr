@@ -5,14 +5,14 @@ var $ = require("jquery");
 
 var masterContainer =
     React.createClass({
-        componentDidMount: function() {
-          this.toggleShortcuts();
+        componentDidMount: function () {
+            this.toggleShortcuts();
         },
-        toggleShortcuts: function() {
-          $(this.refs.monstersShortcut.getDOMNode()).toggle();
-          $(this.refs.playersShortcut.getDOMNode()).toggle();
+        toggleShortcuts: function () {
+            $(this.refs.monstersShortcut.getDOMNode()).toggle();
+            $(this.refs.playersShortcut.getDOMNode()).toggle();
         },
-        toggleMenu: function(e) {
+        toggleMenu: function (e) {
             $(this.refs.menu.getDOMNode()).toggleClass("active");
             this.toggleShortcuts()
             e.preventDefault();
@@ -30,14 +30,14 @@ var masterContainer =
                         </ul>
                         <ul className="sidebar-nav" id="sidebar">
                             <li>
-                                <a>
-                                    Players
+                                <Link to="players">
+                                    <span>Players</span>
                                     <span className="nav-list-item" ref="playersShortcut">P</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <a>
-                                    Monsters
+                                Monsters
                                     <span className="nav-list-item" ref="monstersShortcut">M</span>
                                 </a>
                             </li>
