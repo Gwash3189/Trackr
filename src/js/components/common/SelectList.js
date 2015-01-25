@@ -9,10 +9,12 @@ var SelectList =
             )
         },
         render: function () {
-            var list = this.props.list.slice(0);
+            var {list, ...other} = this.props;
+            list = list.slice(0);
             list.unshift(this.props.defaultValue || {value: ""});
+
            return (
-               <select  className={this.props.className} id={this.props.id} onChange={this.props.onChange}>
+               <select {...other}>
                     {list.map(this.renderList)}
                </select>
            )
@@ -20,4 +22,3 @@ var SelectList =
     });
 
 module.exports = SelectList;
-

@@ -3,7 +3,7 @@ var Reflux = require("reflux");
 var PlayerStore = require("./../../stores/players/playerStore");
 var PlayersList = require("./playersList");
 var Navigation = require("react-router").Navigation;
-var RouteHandler = require('react-router').RouteHandler;
+var Search = require("./../search/search");
 
 
 var Player =
@@ -22,11 +22,14 @@ var Player =
                 players: players
             });
         },
+        search: function() {
+
+        },
         render: function () {
             return (
                 <div className="row">
                     <div className="col-xs-12 main">
-                        <h1 className="page-header">Players</h1>
+                        <Search list={this.state.players} searchBy={this.search}></Search>
                         <PlayersList players={this.state.players}/>
                     </div>
                 </div>

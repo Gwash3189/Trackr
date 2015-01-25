@@ -50,29 +50,39 @@ module.exports = React.createClass({
                     <form>
                         <div className="form-group">
                             <label htmlFor="name">Character Name</label>
-                            <input id="name" className="form-control input-lg" value={this.props.player.name} onChange={this.handleChange}/>
+                            <input type="text" id="name" className="form-control input-lg" value={this.props.player.name} onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="imageSource">Character Image</label>
-                            <input id="imageSource" className="form-control input-lg" value={this.props.player.imageSource} onChange={this.handleChange}/>
+                            <input type="text" id="imageSource" className="form-control input-lg" value={this.props.player.imageSource} onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="initiativeModifier">Initiative Modifier</label>
+                            <input type="number" id="initiativeModifier" className="form-control input-lg" value={this.props.player.initiativeModifier} onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="totalHealth">Total Health</label>
+                            <input type="number" id="totalHealth" className="form-control input-lg" value={this.props.player.totalHealth} onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="playerName">Player Name</label>
-                            <input id="playerName" className="form-control input-lg" value={this.props.player.playerName} onChange={this.handleChange}/>
+                            <input type="text" id="playerName" className="form-control input-lg" value={this.props.player.playerName} onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="class">Class</label>
                             <SelectList className="form-control input-lg" id="class"
                                 list={this.state.classes}
                                 onChange={this.handleChange}
-                                defaultValue={{value: "Class"}}></SelectList>
+                                value={this.props.player.class}
+                                model={this.props.player}></SelectList>
                         </div>
                         <div className="form-group">
                             <label htmlFor="race">Race</label>
                             <SelectList className="form-control input-lg" id="race"
                                 list={this.state.races}
                                 onChange={this.handleChange}
-                                defaultValue={{value: "Race"}}></SelectList>
+                                value={this.props.player.race}
+                                model={this.props.player}></SelectList>
                         </div>
                     </form>
                     <FloatingNavigationButton className="btn-success" onClick={this.goBackToPlayers}>

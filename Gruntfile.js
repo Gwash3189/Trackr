@@ -33,8 +33,13 @@ module.exports = function (grunt) {
         watch: true, // use webpacks watcher
         // You need to keep the grunt process alive
 
-        keepalive: true // don't finish the grunt task
+        keepalive: true, // don't finish the grunt task
         // Use this in combination with the watch option
+        externals: {
+            // require("jquery") is external and available
+            //  on the global var jQuery
+            "jquery": "jQuery"
+        }
     };
 
     grunt.initConfig({
@@ -43,7 +48,11 @@ module.exports = function (grunt) {
                 files: {
                     "prod/css/bootstrap.min.css": "bower_components/bootstrap/dist/css/bootstrap.min.css",
                     "prod/css/font-awesome.min.css": "bower_components/font-awesome/css/font-awesome.min.css",
-                    "prod/fonts": "bower_components/font-awesome/fonts"
+                    "prod/fonts": "bower_components/font-awesome/fonts",
+                    "prod/external/jquery.min.js" : "bower_components/jquery/dist/jquery.min.js",
+                    "prod/external/bootstrap.min.js" : "bower_components/bootstrap/dist/js/bootstrap.min.js",
+                    "src/external/jquery.min.js" : "bower_components/jquery/dist/jquery.min.js",
+                    "src/external/bootstrap.min.js" : "bower_components/bootstrap/dist/js/bootstrap.min.js"
                 }
             }
         },
