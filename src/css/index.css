@@ -8,6 +8,10 @@
     border-radius: 15px;
 }
 
+.mobile-menu-button {
+    color: white;
+}
+
 .container-fluid {
     padding-right: 0;
     padding-left: 0;

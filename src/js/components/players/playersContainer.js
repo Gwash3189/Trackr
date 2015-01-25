@@ -14,18 +14,11 @@ var Player =
         mixins: [Navigation, State, Reflux.ListenerMixin],
         getInitialState: function () {
             return {
-                players: [],
-                searchList: [],
-                showSearchOnly: false
+                players: []
             };
         },
         componentDidMount: function () {
             this.listenTo(PlayerStore, this.updatePlayers, this.updatePlayers);
-            this.listenTo(SearchStore, this.updateSearchList);
-            var search = this.getParams().search;
-            if(search){
-                this.search(search);
-            }
         },
         updatePlayers: function (players) {
             this.setState({
@@ -57,10 +50,9 @@ var Player =
             return (
                 <div className="row">
                     <div className="col-xs-12 main">
-                        <Search value={this.getParams().search} searchBy={this.search} goToWhenSearching={this.whileSearching} goToWhenNotSearching={this.whileNotSearching}></Search>
+                        <Search searchBy={this.search} goToWhenSearching={this.whileSearching} goToWhenNotSearching={this.whileNotSearching} disabled={this.state.players.length === 0}></Search>
                         {
-                            (this.state.showSearchOnly && <PlayersList players={this.state.searchList}/>) ||
-                            (this.state.players.length > 0 && <PlayersList players={this.state.players}/>)
+                            <PlayersList players={this.state.players}/>
                         }
                     </div>
                 </div>

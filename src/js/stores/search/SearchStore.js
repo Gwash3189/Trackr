@@ -2,6 +2,9 @@ var Reflux = require("reflux");
 var SearchActions = require("./../../actions/search/search");
 var SearchStore = Reflux.createStore({
     listenables: [SearchActions],
+    getInitialState: function() {
+        return [];
+    },
     onSearch: function (predicate, list) {
         var predicates;
         var prop;

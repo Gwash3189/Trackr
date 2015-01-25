@@ -8,7 +8,7 @@ var masterContainer =
         componentDidMount: () => {
             $("a.active").parent().addClass("active");
         },
-        render: () => {
+        render: function() {
             return (
                 <div>
                     <nav className="navbar navbar-inverse">
@@ -16,7 +16,7 @@ var masterContainer =
                             <div className="navbar-header">
                                 <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                     <span className="sr-only">Toggle navigation</span>
-                                    <span className="fa fa-bars"></span>
+                                    <span className="fa fa-bars mobile-menu-button"></span>
                                 </button>
                                 <a className="navbar-brand" href="#">Trackr</a>
                             </div>
