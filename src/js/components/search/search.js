@@ -1,16 +1,10 @@
 var React = require("react");
-var Navigation = require("react-router").Navigation;
-var $ = require("jquery");
 
 module.exports = React.createClass({
-    mixins: [Navigation],
     getInitialState: function () {
         return {
             value: ""
         }
-    },
-    componentDidMount: function() {
-        setFocus();
     },
     setValue: function (e) {
         this.setState({
@@ -19,18 +13,12 @@ module.exports = React.createClass({
         this.callSearchCallBack(e.target.value);
     },
     callSearchCallBack: function (value) {
-        this.props.searchBy(value);
+        this.props.searchBy(value, this.props.list);
         if (value !== "" && this.props.goToWhenSearching) {
             this.props.goToWhenSearching(value);
         }
         if (value === "" && this.props.goToWhenNotSearching) {
             this.props.goToWhenNotSearching();
-        }
-    },
-    setFocus: function() {
-        debugger;
-        if(this.props.setFocus){
-            $(this.refs.search.getDOMNode()).focus();
         }
     },
     render: function () {

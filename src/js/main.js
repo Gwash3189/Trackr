@@ -5,7 +5,6 @@ var DefaultRoute = Router.DefaultRoute;
 
 var MasterContainer = require("./components/master/masterContainer");
 var PlayersContainer = require("./components/players/playersContainer");
-var PlayersSearchContainer = require("./components/players/playersSearchContainer");
 var PlayerDetailsContainer = require("./components/playerDetails/PlayerDetailsContainer");
 
 
@@ -15,7 +14,6 @@ var routes = (
     <Route name="Trackr" path="/" handler={MasterContainer}>
         <DefaultRoute handler={PlayersContainer} />
         <Route name="players" path="players" handler={PlayersContainer} />
-        <Route name="search" path="players/:search" handler={PlayersSearchContainer} />
         <Route name="player" path="player/:id" handler={PlayerDetailsContainer} />
     </Route>
 );
