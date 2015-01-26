@@ -11,7 +11,6 @@ module.exports = {
         SearchStore.listen(this.updateSearchList);
     },
     updateSearchList: function (searchList) {
-        debugger;
         this.setState({
             searchList: searchList || [],
             showSearch: true

@@ -6,29 +6,26 @@ var SearchStore = Reflux.createStore({
         return [];
     },
     onSearch: function (opts) {
-        debugger;
         var predicates;
         var prop;
         var searchValue;
         var l;
+        var searchTerms;
         if (opts.value === "") {
             this.trigger(list);
         }
         if (opts.value != null && opts.list != null && opts.list instanceof Array) {
             if (opts.value.indexOf(":") > 0) {
-                predicates = opts.value.split(":");
-                prop = predicates[0];
-                searchValue = predicates[1];
-                l = opts.list.filter((x, i) => {
-                    if (opts.list[i][prop] && opts.list[i][prop] === searchValue) {
-                        return true;
-                    }
+                debugger;
+                var tmp = [];
+                var results = [];
+                this.getSearchTerms(opts.value).forEach(x => {
+                    l = results.concat(this.searchForValueOnProps(opts.list, x));
                 });
                 this.trigger(l);
             } else {
                 searchValue = opts.value;
                 l = opts.list.filter(x => {
-                    debugger;
                     if (this.isExactMatch(x.name, searchValue)) {
                         return true;
                     } else if (this.containsPredicate(x.name.toLowerCase(), searchValue.toLowerCase())) {
@@ -39,10 +36,26 @@ var SearchStore = Reflux.createStore({
             }
         }
     },
-    isExactMatch: function(mustMatch, check) {
+    searchForValueOnProps: function(list, valueDTO) {
+        return list.filter((player) => {
+            if (player[valueDTO.prop] && player[valueDTO.prop] === valueDTO.searchValue) {
+                return true;
+            }
+        })
+    },
+    getSearchTerms: function (value) {
+        return value.split(" ").map(x => {
+            var t = x.split(":");
+            return {
+                prop: t[0],
+                searchValue: t[1]
+            }
+        });
+    },
+    isExactMatch: function (mustMatch, check) {
         return mustMatch === check;
     },
-    containsPredicate: function(mustMatch, check) {
+    containsPredicate: function (mustMatch, check) {
         return mustMatch.indexOf(check) > -1;
     }
 });
