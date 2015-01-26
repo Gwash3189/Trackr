@@ -44,8 +44,13 @@ var SearchStore = Reflux.createStore({
         })
     },
     getSearchTerms: function (value) {
-        return value.split(" ").map(x => {
-            var t = x.split(":");
+        var replaceColonAndSpaceRegEx = /[:]\s*/g;
+        var replaceWith = ":";
+        var splitByFirst = " ";
+        var splitBySecond = ":";
+
+        return value.replace(replaceColonAndSpaceRegEx, replaceWith).split(splitByFirst).map(x => {
+            var t = x.split(splitBySecond);
             return {
                 prop: t[0],
                 searchValue: t[1]
