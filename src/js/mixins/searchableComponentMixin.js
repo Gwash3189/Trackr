@@ -1,26 +1,30 @@
 var SearchStore = require("./../stores/search/SearchStore");
 var SearchActions = require("./../actions/search/search");
 module.exports = {
-    setInitialState: function() {
+    setInitialState: function () {
         return {
             searchList: [],
             showSearch: false
         }
     },
-    componentDidMount: function() {
+    componentDidMount: function () {
         SearchStore.listen(this.updateSearchList);
     },
     updateSearchList: function (searchList) {
-        this.setState({
-            searchList: searchList || [],
-            showSearch: true
-        });
+        if (this.isMounted()) {
+            this.setState({
+                searchList: searchList || [],
+                showSearch: true
+            });
+        }
     },
     search: function (value, searchList) {
-        if(value === ""){
-            this.setState({
-                showSearch: false
-            });
+        if (value === "") {
+            if (this.isMounted()) {
+                this.setState({
+                    showSearch: false
+                });
+            }
         } else {
             SearchActions.search({
                 value: value,
