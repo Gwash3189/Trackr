@@ -1,10 +1,56 @@
+var webpack = require("webpack");
 module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-webpack");
     grunt.loadNpmTasks("grunt-bowercopy");
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     var webpackConfig = {};
+    webpackConfig.prod = {
+        // webpack options
+        module: {
+            loaders: [ // required for react jsx
+                {
+                    test: /\.js$/,
+                    loader: "jsx-loader?harmony"
+                }, {
+                    test: /\.jsx$/,
+                    loader: "jsx-loader?harmony"
+                }
+            ]
+        },
+        plugins: [
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    warnings: false,
+                },
+                sourceMap: false
+            })
+        ],
+        entry: "./src/js/main.js",
+        output: {
+            path: "prod/js",
+            filename: "main.js"
+        },
+
+        progress: true, // Don't show progress
+        // Defaults to true
+
+        failOnError: true, // don't report error to grunt if webpack find errors
+        // Use this if webpack errors are tolerable and grunt should continue
+
+        watch: false, // use webpacks watcher
+        // You need to keep the grunt process alive
+
+        keepalive: true, // don't finish the grunt task
+        // Use this in combination with the watch option
+        externals: {
+            // require("jquery") is external and available
+            //  on the global var jQuery
+            "jquery": "jQuery"
+        }
+    };
     webpackConfig.dev = {
         // webpack options
         module: {
@@ -57,15 +103,14 @@ module.exports = function (grunt) {
             }
         },
         webpack: {
-            trackr: webpackConfig.dev
+            dev: webpackConfig.dev,
+            prod: webpackConfig.prod
         },
-        concat: {
-            options: {
-                separator: ';'
-            },
-            css: {
-                src: ['src/css/**/*.css'],
-                dest: 'prod/css/index.css'
+        cssmin: {
+            prod: {
+                files: {
+                    "prod/css/index.css" : ["src/css/**/*.css"]
+                }
             }
         },
         watch: {
@@ -88,7 +133,8 @@ module.exports = function (grunt) {
         process.env.NODE_ENV = "production";
     });
 
-    grunt.registerTask("default", ["copyIndex", "concat", "bowercopy"]);
-    grunt.registerTask("prod", ["node-prod", "copyIndex", "bowercopy", "webpack:trackr-prod"]);
+    grunt.registerTask("default", ["copyIndex", "cssmin", "bowercopy"]);
+    
+    grunt.registerTask("prod", ["node-prod", "copyIndex", "cssmin", "bowercopy", "webpack:prod"]);
 
 };

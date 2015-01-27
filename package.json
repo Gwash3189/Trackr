@@ -1,5 +1,5 @@
 {
-  "name": "Trackr",
+  "name": "dungeonminder",
   "version": "1.0.0",
   "description": "D&D 5E Assitant",
   "main": "index.js",
@@ -13,6 +13,7 @@
     "grunt": "^0.4.5",
     "grunt-bowercopy": "^1.1.0",
     "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-webpack": "^1.0.8",
     "jsx-loader": "^0.12.1",
@@ -21,7 +22,6 @@
     "webpack": "^1.4.8"
   },
   "dependencies": {
-    "bootstrap": "^3.3.2",
     "react": "^0.12.2",
     "react-router": "^0.11.x",
     "reflux": "^0.2.x"
