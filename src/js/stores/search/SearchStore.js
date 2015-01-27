@@ -16,7 +16,6 @@ var SearchStore = Reflux.createStore({
         }
         if (opts.value != null && opts.list != null && opts.list instanceof Array) {
             if (opts.value.indexOf(":") > 0) {
-                debugger;
                 var tmp = [];
                 var results = [];
                 this.getSearchTerms(opts.value).forEach(x => {
@@ -26,9 +25,9 @@ var SearchStore = Reflux.createStore({
             } else {
                 searchValue = opts.value;
                 l = opts.list.filter(x => {
-                    if (this.isExactMatch(x.name, searchValue)) {
+                    if (this.isExactMatch(opts.getSearchTerms(x), searchValue)) {
                         return true;
-                    } else if (this.containsPredicate(x.name.toLowerCase(), searchValue.toLowerCase())) {
+                    } else if (this.containsPredicate(opts.getSearchTerms(x), searchValue.toLowerCase())) {
                         return true;
                     }
                 });

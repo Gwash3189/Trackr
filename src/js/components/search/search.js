@@ -13,7 +13,7 @@ module.exports = React.createClass({
         this.callSearchCallBack(e.target.value);
     },
     callSearchCallBack: function (value) {
-        this.props.searchBy(value, this.props.list);
+        this.props.searchBy(value, this.props.list, this.props.defaultSearchValue);
         if (value !== "" && this.props.goToWhenSearching) {
             this.props.goToWhenSearching(value);
         }

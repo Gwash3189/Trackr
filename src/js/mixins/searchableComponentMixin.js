@@ -18,7 +18,7 @@ module.exports = {
             });
         }
     },
-    search: function (value, searchList) {
+    search: function (value, searchList, defaultSearchValue) {
         if (value === "") {
             if (this.isMounted()) {
                 this.setState({
@@ -28,7 +28,8 @@ module.exports = {
         } else {
             SearchActions.search({
                 value: value,
-                list: searchList
+                list: searchList,
+                getSearchTerms: defaultSearchValue
             });
         }
     }

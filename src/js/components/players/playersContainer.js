@@ -7,7 +7,6 @@ var State = require("react-router").State;
 var Search = require("./../search/search");
 var Searchable = require('./../../mixins/searchableComponentMixin');
 
-
 var Player =
     React.createClass({
         mixins: [Navigation, State, Reflux.ListenerMixin, Searchable],
@@ -28,7 +27,7 @@ var Player =
             return (
                 <div className="row">
                     <div className="col-xs-12 main">
-                        <Search list={this.state.players} searchBy={this.search} disabled={this.state.players.length === 0}></Search>
+                        <Search defaultSearchValue={x => x.name} list={this.state.players} searchBy={this.search} disabled={this.state.players.length === 0}></Search>
                         <PlayersList players={ this.state.showSearch === true ? this.state.searchList : this.state.players}/>
                     </div>
                 </div>
