@@ -18,7 +18,7 @@ var masterContainer =
                                     <span className="sr-only">Toggle navigation</span>
                                     <span className="fa fa-bars mobile-menu-button"></span>
                                 </button>
-                                <a className="navbar-brand" href="#">Dungeon Minder</a>
+                                <a className="navbar-brand" href="#">Dungeon Minder [Alpha]</a>
                             </div>
 
                             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
